@@ -9,8 +9,8 @@ public class Game : MonoBehaviour
     //Contains all the logic for the game, outsourcing the presentation of the tilemap to Board.cs and the properties of each tile to Cell.cs
 
     //Width and height of the board determined by user input, but default set to 16x16, the 'normal' difficulty rating. 
-    public int width = 16;
-    public int height = 16;
+    public int width;
+    public int height;
     //changes according to size of grid, see EasyMode(), NormalMode(), and HardMode()
     public int mineCount = 32;
 
@@ -21,6 +21,8 @@ public class Game : MonoBehaviour
     private bool gameOver;
     [SerializeField]
     private UIManager uI;
+    private bool helper;
+    int flaggedMines;
 
     private void Awake()
     {
@@ -34,6 +36,7 @@ public class Game : MonoBehaviour
         uI.quitUI.SetActive(false);
         uI.winMessage.SetActive(false);
         uI.lostMessage.SetActive(false);
+        uI.customMenu.SetActive(false);
     }
 
     private void MenuScreen()
@@ -54,6 +57,7 @@ public class Game : MonoBehaviour
         uI.easyButton.onClick.AddListener(EasyMode);
         uI.normalButton.onClick.AddListener(NormalMode);
         uI.hardButton.onClick.AddListener(HardMode);
+        uI.customButton.onClick.AddListener(customMode);
     }
 
     //EasyMode uses a grid of 9x9 with 5 mines.
@@ -63,11 +67,6 @@ public class Game : MonoBehaviour
         width = 9;
         height = 9;
         mineCount = 5;
-
-        //camera position changes according to the size of the grid so it remains centred
-        Camera.main.transform.position = new Vector3(width / 2f - 5, height / 2f, -10f);
-        Camera cam = Camera.main.GetComponent<Camera>();
-        cam.orthographicSize = 8;
 
         uI.menuUI.SetActive(false);
         NewGame();
@@ -81,11 +80,6 @@ public class Game : MonoBehaviour
         height = 16;
         mineCount = 32;
 
-        //camera position changes according to the size of the grid so it remains centred
-        Camera.main.transform.position = new Vector3(width / 2f - 7, height / 2f, -10f);
-        Camera cam = Camera.main.GetComponent<Camera>();
-        cam.orthographicSize = 10;
-
         uI.menuUI.SetActive(false);
         NewGame();
     }
@@ -98,18 +92,63 @@ public class Game : MonoBehaviour
         height = 20;
         mineCount = 50;
 
-        //camera position changes according to the size of the grid so it remains centred
-        Camera.main.transform.position = new Vector3(width / 2f - 10, height / 2f, -10f);
-        Camera cam = Camera.main.GetComponent<Camera>();
-        cam.orthographicSize = 13;
-
         uI.menuUI.SetActive(false);
         NewGame();
     }
 
+    private void customMode()
+    {
+        uI.menuUI.SetActive(false);
+        uI.customMenu.SetActive(true);
+        width = 2;
+        height = 2;
+        uI.mineInput.maxValue = (int)(width * height * 0.75);
+        uI.mineInput.value = 1;
+        uI.widthInput.value = width;
+        uI.heightInput.value = height;
+
+        uI.widthInput.onValueChanged.AddListener((w) =>
+        {
+            uI.widthInputText.text = w.ToString();
+            width = (int)w;
+            uI.mineInput.maxValue = (int)(width * height * 0.75);
+        });
+
+        uI.heightInput.onValueChanged.AddListener((h) =>
+        {
+            uI.heightInputText.text = h.ToString();
+            height = (int)h;
+            uI.mineInput.maxValue = (int)(width * height * 0.75);
+        });
+
+        uI.mineInput.onValueChanged.AddListener((m) =>
+        {
+            uI.mineInputText.text = m.ToString();
+            mineCount = (int)m;
+        });
+
+        uI.customStartButton.onClick.AddListener(NewGame);
+    }
 
     private void NewGame()
     {
+        uI.customMenu.SetActive(false);
+        uI.menuUI.SetActive(false);
+        helper = false;
+        uI.inGameHelper.SetActive(false);
+        uI.inGameMineCount.text = mineCount.ToString();
+
+        Camera.main.transform.position = new Vector3(0, height / 2f, -10f);
+        Camera cam = Camera.main.GetComponent<Camera>();
+        if (height > width)
+        {
+            cam.orthographicSize = height * 0.65f;
+        }
+        else
+        {
+            cam.orthographicSize = width * 0.65f;
+        }
+
         //makes the grid responsive to user input
         gameOver = false;
 
@@ -237,6 +276,20 @@ public class Game : MonoBehaviour
         {
             QuitMenu();
         }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            if(helper)
+            {
+                uI.inGameHelper.SetActive(false);
+                helper = false;
+            }
+            else if(!helper)
+            {
+                uI.inGameHelper.SetActive(true);
+                helper = true;
+            }
+        }
     }
 
     //flags a given cell, if that cell is not revealed
@@ -246,6 +299,7 @@ public class Game : MonoBehaviour
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3Int cellPosition = board.tilemap.WorldToCell(worldPosition);
         Cell cell = GetCell(cellPosition.x, cellPosition.y);
+        flaggedMines = 0;
 
         if(cell.type == Cell.Type.Invalid || cell.revealed)
         {
@@ -254,6 +308,22 @@ public class Game : MonoBehaviour
 
         cell.flagged = !cell.flagged;
         state[cellPosition.x, cellPosition.y] = cell;
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                cell = state[x, y];
+
+                if(cell.flagged && cell.type == Cell.Type.Mine)
+                {
+                    flaggedMines++;
+                }
+            }
+        }
+
+        uI.inGameMinesFlagged.text = flaggedMines.ToString();
+
         //redraws the board after each interaction
         board.Draw(state);
 

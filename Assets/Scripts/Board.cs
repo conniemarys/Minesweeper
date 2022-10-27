@@ -26,7 +26,6 @@ public class Board : MonoBehaviour
     public Tile tileNum6;
     public Tile tileNum7;
     public Tile tileNum8;
-    
 
     private void Awake()
     {
