@@ -12,7 +12,6 @@ public class Board : MonoBehaviour
     public Tilemap tilemap { get; private set; }
 
     // Instantiating all possible tiles to be used across the tilemap
-    //test
 
     public Tile tileUnknown;
     public Tile tileEmpty;

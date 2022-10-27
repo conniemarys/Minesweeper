@@ -10,6 +10,9 @@ public class UIManager : MonoBehaviour
     public Button easyButton;
     public Button normalButton;
     public Button hardButton;
+    public GameObject quitUI;
+    public Button noButton;
+    public Button yesButton;
 
     private void Start()
     {

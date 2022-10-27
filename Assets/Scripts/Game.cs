@@ -31,6 +31,7 @@ public class Game : MonoBehaviour
     private void Start()
     {
         MenuScreen();
+        uI.quitUI.SetActive(false);
     }
 
     private void MenuScreen()
@@ -227,7 +228,10 @@ public class Game : MonoBehaviour
             }
         }
 
-
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            QuitMenu();
+        }
     }
 
     //flags a given cell, if that cell is not revealed
@@ -388,6 +392,23 @@ public class Game : MonoBehaviour
 
     }
 
-    
+    private void QuitMenu()
+    {
+        gameOver = true;
+        uI.quitUI.SetActive(true);
+        uI.yesButton.onClick.AddListener(yesQuit);
+        uI.noButton.onClick.AddListener(noQuit);
+    }
+
+    private void yesQuit()
+    {
+        Application.Quit();
+    }
+
+    private void noQuit()
+    {
+        gameOver = false;
+        uI.quitUI.SetActive(false);
+    }
 
 }
