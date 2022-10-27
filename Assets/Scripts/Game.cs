@@ -233,7 +233,7 @@ public class Game : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             QuitMenu();
         }
@@ -407,6 +407,7 @@ public class Game : MonoBehaviour
         uI.quitUI.SetActive(true);
         uI.yesButton.onClick.AddListener(yesQuit);
         uI.noButton.onClick.AddListener(noQuit);
+
     }
 
     private void yesQuit()
