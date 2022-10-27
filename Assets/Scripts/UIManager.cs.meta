@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ec02618699d7d4f77aa5a1fa96e2368b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inGameUI: {fileID: 8524320108486547072, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
+  - menuUI: {fileID: 3504886775546099097, guid: bf59910ef5a62433695c409869b0e9b5, type: 3}
+  - easyButton: {fileID: 1688458774674131932, guid: 42c15dd3e4b65439b8d6864d1d974cb3, type: 3}
+  - normalButton: {fileID: 5814536314894011175, guid: 7d2862d5a1b744eabb74cf07d3b40fdc, type: 3}
+  - hardButton: {fileID: 6941695797406143185, guid: 691a4388b7ea94bc190f1b329c062661, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
