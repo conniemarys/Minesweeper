@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     public GameObject quitUI;
     public Button noButton;
     public Button yesButton;
+    public GameObject winMessage;
+    public GameObject lostMessage;
 
     private void Start()
     {

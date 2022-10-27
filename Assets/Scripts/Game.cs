@@ -32,10 +32,15 @@ public class Game : MonoBehaviour
     {
         MenuScreen();
         uI.quitUI.SetActive(false);
+        uI.winMessage.SetActive(false);
+        uI.lostMessage.SetActive(false);
     }
 
     private void MenuScreen()
     {
+        uI.lostMessage.SetActive(false);
+        uI.winMessage.SetActive(false);
+
         //this erases the board underneath completely so if the user downsizes the board,
         //it draws a new board from scratch, respecting the downsize
         state = new Cell[0, 0];
@@ -314,6 +319,8 @@ public class Game : MonoBehaviour
     {
         gameOver = true;
 
+        uI.lostMessage.SetActive(true);
+
         cell.revealed = true;
         cell.exploded = true;
         state[cell.position.x, cell.position.y] = cell;
@@ -372,6 +379,8 @@ public class Game : MonoBehaviour
         }
 
         gameOver = true;
+
+        uI.winMessage.SetActive(true);
 
         for (int x = 0; x < width; x++)
         {
