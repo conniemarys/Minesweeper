@@ -136,6 +136,8 @@ public class Game : MonoBehaviour
         uI.menuUI.SetActive(false);
         helper = false;
         uI.inGameHelper.SetActive(false);
+        flaggedMines = 0;
+        uI.inGameMinesFlagged.text = flaggedMines.ToString();
         uI.inGameMineCount.text = mineCount.ToString();
 
         Camera.main.transform.position = new Vector3(0, height / 2f, -10f);

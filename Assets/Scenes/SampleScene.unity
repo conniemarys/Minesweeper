@@ -266,9 +266,9 @@ MonoBehaviour:
   heightInputText: {fileID: 4496972221599428656}
   mineInputText: {fileID: 4496972221599428655}
   customStartButton: {fileID: 4496972221599428654}
-  inGameMineCount: {fileID: 0}
-  inGameMinesFlagged: {fileID: 0}
-  inGameHelper: {fileID: 0}
+  inGameMineCount: {fileID: 596417575}
+  inGameMinesFlagged: {fileID: 1132199884}
+  inGameHelper: {fileID: 794777886}
 --- !u!114 &508222905 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 771942487241257632, guid: bf59910ef5a62433695c409869b0e9b5, type: 3}
@@ -385,6 +385,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &596417575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3216993485707680919, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
+  m_PrefabInstance: {fileID: 8613673502340980436}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &632439281 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4496972222191759836, guid: ebf3e9c2cf706423383cc6fff85332b5, type: 3}
@@ -396,6 +407,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &794777886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8003894151673612182, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
+  m_PrefabInstance: {fileID: 8613673502340980436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &945302084 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 771942486738797917, guid: bf59910ef5a62433695c409869b0e9b5, type: 3}
@@ -748,6 +764,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1132199884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6040116736908499819, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
+  m_PrefabInstance: {fileID: 8613673502340980436}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1402046722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,6 +1815,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.6745098
       objectReference: {fileID: 0}
+    - target: {fileID: 3216993485707680919, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3550561294753942567, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
       propertyPath: m_SizeDelta.x
       value: 241.0661
@@ -1804,6 +1835,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 349
       objectReference: {fileID: 0}
+    - target: {fileID: 3686681363057706763, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
+      propertyPath: m_Color.b
+      value: 0.60784316
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686681363057706763, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686681363057706763, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040116736908499819, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6040116736908499819, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
       propertyPath: m_Color.b
       value: 0.60784316
@@ -1815,6 +1862,10 @@ PrefabInstance:
     - target: {fileID: 6040116736908499819, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
       propertyPath: m_Color.r
       value: 0.6745098
+      objectReference: {fileID: 0}
+    - target: {fileID: 6040116736908499819, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8524320108486547072, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
       propertyPath: m_Name
