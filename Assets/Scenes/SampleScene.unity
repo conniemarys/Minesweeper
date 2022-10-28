@@ -1920,10 +1920,13 @@ PrefabInstance:
 
         Right click to flag stones.
 
-        Press ''M''
-        to return to Menu and [esc] to
+        Press ''H'' 
+        toggle hints on/off.
 
-        quit at any time.'
+        Press ''M'' to return to Menu and [esc] to
+
+        quit
+        at any time.'
       objectReference: {fileID: 0}
     - target: {fileID: 8613673501349607833, guid: 738c6d6db7f3e45caa1b2edb888ab648, type: 3}
       propertyPath: m_FontData.m_MaxSize
