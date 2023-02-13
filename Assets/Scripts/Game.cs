@@ -255,7 +255,7 @@ public class Game : MonoBehaviour
     //Update very minimal, only checking for user input and calling relevant methods
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             MenuScreen();
         }
